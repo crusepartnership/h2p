@@ -92,6 +92,10 @@ class PhantomJS extends ConverterAbstract
         'border' => '1cm',
         'header' => null,
         'footer' => null,
+        'viewportSize' => array(
+            'width' =>  768,
+            'height' => 1024
+        )
     );
 
     /**

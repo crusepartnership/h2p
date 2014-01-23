@@ -52,6 +52,8 @@ try {
     var options = JSON.parse(args[1]);
 
     page.customHeaders = options.request.headers;
+    
+    page.viewportSize = options.viewportSize;
     phantom.cookies = options.request.cookies;
 
     page.open(options.request.uri + (options.request.method == 'GET' ? '?' + options.request.params : ''), options.request.method, options.request.params, function (status) {
