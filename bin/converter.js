@@ -52,7 +52,7 @@ try {
     var options = JSON.parse(args[1]);
 
     page.customHeaders = options.request.headers;
-    
+    options.delay = options.delay || 0;
     page.viewportSize = options.viewportSize;
     phantom.cookies = options.request.cookies;
 
@@ -111,17 +111,22 @@ try {
                 }
             }
 
-            page.paperSize = paperSize;
-            page.zoomFactor = options.zoomFactor;
-            page.render(options.destination, { format: 'pdf' });
+            window.setTimeout(function() {
+                page.paperSize = paperSize;
+                page.zoomFactor = options.zoomFactor;
+                page.render(options.destination, { format: 'pdf' });
 
-            console.log(JSON.stringify({
-                success: true,
-                response: null
-            }));
+                console.log(JSON.stringify({
+                    success: true,
+                    response: null
+                }));
 
-            // Stop the script
-            phantom.exit(0);
+                // Stop the script
+                phantom.exit(0);
+
+            }, options.delay);
+
+
 
         } catch (e) {
             errorHandler(e);
