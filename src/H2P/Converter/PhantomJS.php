@@ -92,6 +92,7 @@ class PhantomJS extends ConverterAbstract
         'border' => '1cm',
         'header' => null,
         'footer' => null,
+        'delay' => 0,
         'viewportSize' => array(
             'width' =>  768,
             'height' => 1024
@@ -100,14 +101,14 @@ class PhantomJS extends ConverterAbstract
 
     /**
      * Library bin path
-     * 
+     *
      * @var string
      */
     protected $binPath = '../../../bin';
-    
+
     /**
      * Paths to search PhantomJS binary file
-     * 
+     *
      * @var array
      */
     protected $searchPaths = array();
@@ -131,8 +132,8 @@ class PhantomJS extends ConverterAbstract
 
     /**
      * Set and detect paths for PhantomJS binary file
-     * 
-     * @param array|string $paths
+     *
+     * @param  array|string             $paths
      * @return \H2P\Converter\PhantomJS $this
      */
     protected function detectSearchPaths($paths = array())
@@ -163,7 +164,7 @@ class PhantomJS extends ConverterAbstract
     /**
      * Set the PhantomJS search path
      *
-     * @param array|string $searchPaths
+     * @param  array|string             $searchPaths
      * @return \H2P\Converter\PhantomJS $this
      */
     public function setSearchPaths($searchPaths)
@@ -180,6 +181,7 @@ class PhantomJS extends ConverterAbstract
     public function addSearchPath($searchPath)
     {
         $this->searchPaths[] = $searchPath;
+
         return $this;
     }
 
@@ -195,7 +197,7 @@ class PhantomJS extends ConverterAbstract
 
     /**
      * Returns the PhantomJS binary path based on defined Search Paths
-     * 
+     *
      * @return string
      * @throws Exception
      */
@@ -210,10 +212,10 @@ class PhantomJS extends ConverterAbstract
 
         throw new Exception('PhantomJS binary not found! Please, download it at <http://phantomjs.org/download.html>');
     }
-    
+
     /**
      * Returns H2P Converter Script Path
-     * 
+     *
      * @return string
      */
     protected function getConverterPath()
@@ -238,7 +240,7 @@ class PhantomJS extends ConverterAbstract
     /**
      * Fix the Request array key names to PhantomJS request object
      *
-     * @param Request $origin
+     * @param  Request $origin
      * @return array
      */
     protected static function fixRequestKeyNames(Request $origin)
@@ -267,8 +269,8 @@ class PhantomJS extends ConverterAbstract
     /**
      * Convert the URI to destination with the specified options
      *
-     * @param \H2P\Request $origin
-     * @param string $destination The destination full path
+     * @param  \H2P\Request   $origin
+     * @param  string         $destination The destination full path
      * @return bool
      * @throws \H2P\Exception
      */
