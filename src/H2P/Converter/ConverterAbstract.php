@@ -57,10 +57,7 @@ abstract class ConverterAbstract
     {
         if (array_key_exists($option, $this->options)) {
             $this->options[$option] = $value;
-        } else {
-            throw new Exception('Option "' . $option . '" not found for this converter!');
-        }
-
+        }  
         return $this;
     }
 
@@ -84,14 +81,13 @@ abstract class ConverterAbstract
      *
      * @param $option
      * @return mixed
-     * @throws \H2P\Exception
      */
     public function getOption($option)
     {
         if (array_key_exists($option, $this->options)) {
             return $this->options[$option];
         } else {
-            throw new Exception('Option "' . $option . '" not found for this converter!');
+            return null;
         }
     }
 
