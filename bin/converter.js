@@ -53,8 +53,8 @@ try {
 
     page.customHeaders = options.request.headers;
     options.delay = options.delay || 0;
-    page.ignoreSslErrors = 'true';
-    options.sslProtocol = 'any';
+    page.settings.ignoreSslErrors = 'true';
+    page.settings.sslProtocol = 'any';
     page.viewportSize = options.viewportSize;
     phantom.cookies = options.request.cookies;
 
