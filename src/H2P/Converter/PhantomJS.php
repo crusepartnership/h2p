@@ -232,7 +232,7 @@ class PhantomJS extends ConverterAbstract
         $phantomjs = $this->getPhantomPath();
         $converter = $this->getConverterPath();
 
-        return escapeshellarg($phantomjs) . ' ' . escapeshellarg($converter);
+        return escapeshellarg($phantomjs) . ' --ignore-ssl-errors=true --ssl-protocol=any ' . escapeshellarg($converter);
     }
 
     /**
