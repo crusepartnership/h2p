@@ -95,9 +95,7 @@ class PhantomJS extends ConverterAbstract
         'viewportSize' => array(
             'width' =>  768,
             'height' => 1024
-        ),
-        'sslProtocol' => 'any',
-        'ignoreSslErrors' => 'true'
+        )
     );
 
     /**
